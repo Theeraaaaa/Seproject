@@ -19,7 +19,7 @@ img {
 }
 
 .button1 {
-    background-color: rgb(190, 190, 190);
+    background-color: lightsteelblue;
     margin-left: 45%;
     font-size: 150%;
     font-family: Serif;
@@ -28,12 +28,17 @@ img {
 }
 
 .button2 {
-    background-color: rgb(190, 190, 190);
+    background-color: lightsteelblue;
     font-size: 150%;
     font-family: Serif;
     padding: 4px;
     border-radius: 10%;
 }
+
+.button:hover {
+    background-color: rgb(229, 245, 47);
+}
+
 .body {
     max-width: 1140px;
     margin: 0 auto;
