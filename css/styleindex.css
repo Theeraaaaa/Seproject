@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(32, 116, 176);
+}
+
+img {
+    border-radius: 40%;
+}
+
+.center {
+    display: block;
+    margin-top: 3%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.button1 {
+    background-color: rgb(190, 190, 190);
+    margin-left: 45%;
+    font-size: 150%;
+    font-family: Serif;
+    padding: 4px;
+    border-radius: 10%;
+}
+
+.button2 {
+    background-color: rgb(190, 190, 190);
+    font-size: 150%;
+    font-family: Serif;
+    padding: 4px;
+    border-radius: 10%;
+}
+.body {
+    max-width: 1140px;
+    margin: 0 auto;
+}

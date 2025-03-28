@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background: url(https://static.vecteezy.com/system/resources/previews/035/862/070/non_2x/delivery-container-vehicle-at-cityscape-background-express-delivering-services-commercial-truck-concept-of-fast-and-free-delivery-by-car-cargo-and-logistic-cartoon-flat-illustration-vector.jpg) center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(32, 116, 176);
+}
+
+.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+            font-weight: bold;
+            color: white; 
+}
+.navbar ul {
+    list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #e9e104;
+    border-radius: 4px;
+}
+
+.text {
+    display: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ecd5d5;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-top: 10%;
+}
+.text h1 {
+    font-size: 800%;
+            color: #ffffff;
+            margin: 0;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(74, 70, 179);
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 3%;
+    font-family: Serif;
+}
+.button:hover {
+    background-color: lightsteelblue;
+    border-radius: 4px;
+}
+
