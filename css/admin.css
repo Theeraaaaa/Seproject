@@ -5,3 +5,36 @@
     align-items: center;
     justify-content: center;
 }
+
+h1 {
+    font-size: 300%;
+}
+
+h2 {
+    font-size: 150%;
+    margin-top: 1.5%;
+}
+
+.table-container {
+    width: 100%;
+    border-collapse: collapse; /* ทำให้เส้นขอบไม่ซ้อนกัน */
+    background-color: lightsteelblue; /* พื้นหลังสีฟ้า */
+    color: white; /* ตัวอักษรสีขาว */
+}
+
+.table-container th {
+    font-size: 18px; /* ขยายตัวอักษรของหัวตาราง */
+    font-weight: bold; /* ทำให้ตัวอักษรหนา */
+    padding: 10px;
+    text-align: left;
+    background-color: #3a6073; /* เปลี่ยนสีหัวตารางให้เข้มขึ้น */
+    border: 1px solid black;
+}
+
+.table-container td {
+    border: 1px solid black; /* ใส่เส้นขอบในแต่ละช่อง */
+    padding: 8px;
+    text-align: left;
+    background-color: white; /* เปลี่ยนพื้นหลังของข้อมูลให้เป็นสีขาว */
+    color: black; /* ตัวอักษรสีดำ */
+}
