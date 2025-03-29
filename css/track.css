@@ -5,3 +5,257 @@
     align-items: center;
     justify-content: center;
 }
+.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}
+.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffd700;
+    color: #333;
+}
