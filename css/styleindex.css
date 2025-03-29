@@ -1,45 +1,76 @@
-* {
+body {
+    background-color: rgb(32, 116, 176); 
+    font-family: 'Segoe UI', Tahoma,  Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: rgb(32, 116, 176);
 }
-
-img {
-    border-radius: 40%;
-}
-
-.center {
-    display: block;
-    margin-top: 3%;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
-.button1 {
-    background-color: lightsteelblue;
-    margin-left: 45%;
-    font-size: 150%;
-    font-family: Serif;
-    padding: 4px;
-    border-radius: 10%;
-}
-
-.button2 {
-    background-color: lightsteelblue;
-    font-size: 150%;
-    font-family: Serif;
-    padding: 4px;
-    border-radius: 10%;
-}
-
-.button:hover {
-    background-color: rgb(229, 245, 47);
-}
-
-.body {
+main {
+    width: 100%;
     max-width: 1140px;
-    margin: 0 auto;
+}
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+.hero-image {
+    max-width: 600px;
+    margin-bottom: 0 rem;
+    border-radius: 20px; 
+}
+.hero-content h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+.hero-content h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.button {
+    background-color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-decoration: none;
+    color: #333;
+}
+.button:hover {
+    background-color: #e0f7fa;
+    transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+    .hero-image {
+        max-width: 200px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
 }
