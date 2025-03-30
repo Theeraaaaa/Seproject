@@ -35,18 +35,19 @@
         }
 
         function completePayment() {
-            alert("ชำระเงินสำเร็จ!");
+    alert("ชำระเงินสำเร็จ!");
 
-            // สร้าง Tracking Number สุ่ม
-            const trackingNumber = "TRACK-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+    // สร้าง Tracking Number สุ่ม
+    const trackingNumber = "TRACK-" + Math.random().toString(36).substring(2, 10).toUpperCase();
 
-            // ดึงค่าจากฟอร์ม
-            const params = new URLSearchParams(getQueryParams());
-            params.append("tracking_number", trackingNumber); // เพิ่ม Tracking Number
+    // ดึงค่าจากฟอร์ม
+    const params = new URLSearchParams(getQueryParams());
+    params.append("tracking_number", trackingNumber); // เพิ่ม Tracking Number
 
-            // ไปหน้า Success.php พร้อมส่งข้อมูล
-            window.location.href = "Success.php?" + params.toString();
-        }
+    // ไปหน้า Success.php พร้อมส่งข้อมูล
+    window.location.href = "Success.php?" + params.toString();
+}
+
 
         function cancelOrder() {
             window.history.back();

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/styleindex.css">
 
 <body>
+
     <img src="https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-cartoon-courier-delivery-fast-png-element-image_2279258.jpg"
         width="30%" class="center">
     <h1 style="color: aliceblue; margin-left: 45.7%; font-size: 200%;">SeExpress</h1><br>
