@@ -31,7 +31,7 @@ require_once 'db/db.php';
         <input type="tel" name="tel" placeholder="Tel"required><br>
 
         <a href="login.php">
-            <button class="button button1">Submit</button>
+            <button class="button button1" type="signup">Submit</button>
         </a>
 
         <a href="index.php">
