@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'db/db.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +18,17 @@
 
     <div class="login-container">
         <h1>SeExpress</h1>
+
+        <form action="signin_db.php" method="post">
+
+           <?php if (isset($_SESSION['error'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    ?>
+                </div>
+            <?php } ?>
 
     <input type="username" name="username" placeholder="Username" required><br>
     <input type="password" name="password" placeholder="Password" required><br>

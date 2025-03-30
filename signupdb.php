@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once 'db/db.php';
 
@@ -62,9 +61,10 @@ if (isset($_POST['signup'])) {
         $stmt->bindParam(":urole", $urole);
         $stmt->execute();
 
-        $_SESSION['success'] = "Register complete! <a href='login.php' class='alert-link'>Click here</a> to login";
-        header("location: register.php");
+        $_SESSION['success'] = "Register complete!";
+        header("location: login.php");
         exit();
+        
 
     } catch (PDOException $e) {
         $_SESSION['error'] = "Something went wrong: " . $e->getMessage();
