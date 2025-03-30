@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delivery</title>
+    <link rel="stylesheet" href="css/Nextcallus.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="homepage.html" class="logo">SeExpress</a>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="track.html">Track</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Confirm Pickup and Delivery</h2>
+
+        <!-- Customer Information Display -->
+        <p><strong>Firstname:</strong> <?php echo htmlspecialchars($_POST['firstname']); ?></p>
+        <p><strong>Lastname:</strong> <?php echo htmlspecialchars($_POST['lastname']); ?></p>
+        <p><strong>Tel:</strong> <?php echo htmlspecialchars($_POST['tel']); ?></p>
+        <p><strong>Address:</strong> <?php echo htmlspecialchars($_POST['address']); ?></p>
+        <p><strong>Destination Address:</strong> <?php echo htmlspecialchars($_POST['destination_address']); ?></p>
+        <p><strong>Delivery Type:</strong> <?php echo htmlspecialchars($_POST['delivery_type']); ?></p>
+        <p><strong>Product Weight:</strong> <?php echo htmlspecialchars($_POST['weight']); ?> kg</p>
+        <p><strong>Product Type:</strong> <?php echo htmlspecialchars($_POST['product_type']); ?></p>
+
+        <!-- Calculate Estimated Price -->
+        <?php
+            $weight = $_POST['weight'];
+            $delivery_type = $_POST['delivery_type'];
+            $product_type = $_POST['product_type'];
+            $base_price = 50; // Base price for calculation (can be adjusted)
+
+            // Adjust price based on weight
+            $price = $base_price + ($weight * 10); // Price calculation example
+            
+            // Adjust price based on delivery type
+            if ($delivery_type == 'express') {
+                $price += 30; // Express delivery fee
+            }
+
+            // Adjust price based on product type
+            if ($product_type == 'electronics') {
+                $price += 20; // Electronics handling fee
+            }
+        ?>
+
+        <p><strong>Estimated Price (THB):</strong> <?php echo number_format($price, 2); ?> THB</p>
+
+        <!-- Confirm or Cancel -->
+        <form action="confirm_order.php" method="POST">
+            <input type="hidden" name="firstname" value="<?php echo htmlspecialchars($_POST['firstname']); ?>">
+            <input type="hidden" name="lastname" value="<?php echo htmlspecialchars($_POST['lastname']); ?>">
+            <input type="hidden" name="tel" value="<?php echo htmlspecialchars($_POST['tel']); ?>">
+            <input type="hidden" name="address" value="<?php echo htmlspecialchars($_POST['address']); ?>">
+            <input type="hidden" name="delivery_type" value="<?php echo htmlspecialchars($_POST['delivery_type']); ?>">
+            <input type="hidden" name="weight" value="<?php echo htmlspecialchars($_POST['weight']); ?>">
+            <input type="hidden" name="product_type" value="<?php echo htmlspecialchars($_POST['product_type']); ?>">
+            <input type="hidden" name="price" value="<?php echo $price; ?>">
+
+            <button type="button" class="track-btn"onclick="window.location.href='#';">Confirm and Proceed</button>
+            <button type="button" class="track-btn" onclick="window.location.href='customerdeli.html';">Cancel</button>
+        </form>
+    </div>
+
+</body>
+</html>
