@@ -9,12 +9,12 @@
 <body>
 
     <nav class="navbar">
-        <a href="homepage.html" class="logo">SeExpress</a>
+        <a href="homepage.php" class="logo">SeExpress</a>
         <ul>
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="track.html">Track</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html">Logout</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="track.php">Track</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="index.php">Logout</a></li>
         </ul>
     </nav>
 
@@ -64,8 +64,8 @@
             <input type="hidden" name="product_type" value="<?php echo htmlspecialchars($_POST['product_type']); ?>">
             <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <button type="button" class="track-btn"onclick="window.location.href='paymentys.html';">Confirm and Proceed</button>
-            <button type="button" class="track-btn" onclick="window.location.href='customerdeli.html';">Cancel</button>
+            <button type="button" class="track-btn"onclick="window.location.href='paymentys.php';">Confirm and Proceed</button>
+            <button type="button" class="track-btn" onclick="window.location.href='customerdeli.php';">Cancel</button>
         </form>
     </div>
 

@@ -10,12 +10,12 @@
 
 <body>
     <nav class="navbar">
-        <a href="homepage.html" class="logo">SeExpress</a>
+        <a href="homepage.php" class="logo">SeExpress</a>
         <ul>
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="track.html">Track</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html">Logout</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="track.php">Track</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="index.php">Logout</a></li>
         </ul>
     </nav>
     <div class="text">
@@ -25,11 +25,11 @@
     </div>
 
     <div class="deli">
-        <a href="customerdeli.html">
+        <a href="customerdeli.php">
             <button class="button button1">deliver yourself</button>
         </a>
 
-        <a href="callus.html">
+        <a href="callus.php">
             <button class="button button2">call us deliver</button>
         </a>
     </div>

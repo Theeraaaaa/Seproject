@@ -14,11 +14,11 @@
     <h1 style="color: aliceblue; margin-left: 45.7%; font-size: 200%;">SeExpress</h1><br>
     <h2 style="color: aliceblue; margin-left: 44%; font-size: 200%;">Fastest Delivery</h2><br>
     
-    <a href="login.html">
+    <a href="login.php">
         <button class="button button1">Login</button>
     </a>
 
-    <a href="register.html">
+    <a href="register.php">
         <button class="button button2">Register</button>
     </a>
 

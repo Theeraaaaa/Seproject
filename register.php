@@ -16,11 +16,11 @@
         <input type="email" name="email" placeholder="Email"required><br>
         <input type="tel" name="tel" placeholder="Tel"required><br>
 
-        <a href="login.html">
+        <a href="login.php">
             <button class="button button1">Submit</button>
         </a>
 
-        <a href="index.html">
+        <a href="index.php">
             <button class="button button2">Cancel</button>
         </a>
         

@@ -8,12 +8,12 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="homepage.html" class="logo">SeExpress</a>
+        <a href="homepage.php" class="logo">SeExpress</a>
         <ul>
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="track.html">Track</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="track.php">Track</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="login.php">Logout</a></li>
         </ul>
     </nav>
 
@@ -45,8 +45,8 @@
             <label for="price">Estimated Price (THB):</label>
             <input type="number" name="price" id="price" placeholder="Estimated price based on weight" readonly><br>
 
-            <button type="button" class="track-btn" onclick="window.location.href='homepage.html';">Cancel</button>
-            <button type="submit" class="track-btn"onclick="window.location.href='NextCustomerdeli.html';">Next</button>
+            <button type="button" class="track-btn" onclick="window.location.href='homepage.php';">Cancel</button>
+            <button type="submit" class="track-btn"onclick="window.location.href='NextCustomerdeli.php';">Next</button>
         </form>
         
     </div>

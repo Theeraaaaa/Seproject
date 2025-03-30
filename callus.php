@@ -9,12 +9,12 @@
 <body>
 
     <nav class="navbar">
-        <a href="homepage.html" class="logo">SeExpress</a>
+        <a href="homepage.php" class="logo">SeExpress</a>
         <ul>
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="track.html">Track</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html">Logout</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="track.php">Track</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="index.php">Logout</a></li>
         </ul>
     </nav>
 
@@ -46,8 +46,8 @@
         
             
             <!-- ปุ่มยกเลิก + ปุ่มถัดไป -->
-            <button type="button" class="track-btn cancel-btn" onclick="window.location.href='homepage.html';">Cancel</button>
-            <button type="button" class="track-btn Next" onclick="window.location.href='Nextcallus.html';">Next</button>
+            <button type="button" class="track-btn cancel-btn" onclick="window.location.href='homepage.php';">Cancel</button>
+            <button type="button" class="track-btn Next" onclick="window.location.href='Nextcallus.php';">Next</button>
         </form>
     </div>
 

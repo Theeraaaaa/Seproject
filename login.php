@@ -17,15 +17,15 @@
     <input type="username" name="username" placeholder="Username" required><br>
     <input type="password" name="password" placeholder="Password" required><br>
 
-    <a href="homepage.html">
+    <a href="homepage.php">
         <button class="buttun button1">Submit</button>
     </a>
 
-    <a href="index.html">
+    <a href="index.php">
         <button class="buttun button2">Cancel</button>
     </a>
 
-    <p>Don't have an account? <a href="register.html" class="btn btn-register">Register</a></p>
+    <p>Don't have an account? <a href="register.php" class="btn btn-register">Register</a></p>
 
     </div>
 
