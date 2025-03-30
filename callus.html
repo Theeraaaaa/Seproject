@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>callus</title>
+    <title>Call Us</title>
     <link rel="stylesheet" href="css/callus.css">
 </head>
 <body>
@@ -16,15 +16,16 @@
             <li><a href="about.html">About</a></li>
             <li><a href="index.html">Logout</a></li>
         </ul>
-        </nav>
+    </nav>
+
     <div class="container">
         <h2>Delivery</h2>
-        <form action="review_order.php" method="POST" class="track-form">
+        <form action="Nextcallus.html" method="POST" class="track-form">
             <input type="text" name="firstname" placeholder="Firstname" required>
             <input type="text" name="lastname" placeholder="Lastname" required><br>
             <input type="tel" name="tel" placeholder="Tel" required><br>
-            <input type="address" name="address" placeholder="Address" required><br>
-            <input type="destination address" name="destination address" placeholder="Destination Address" required><br>
+            <input type="text" name="address" placeholder="Address" required><br>
+            <input type="text" name="destination_address" placeholder="Destination Address" required><br>
         
             <label for="delivery_type">Delivery Type:</label>
             <select name="delivery_type" id="delivery_type" required>
@@ -43,12 +44,11 @@
                 <option value="electronics">Electronics</option>
             </select><br>
         
-            <label for="price">Estimated Price (THB):</label>
-            <input type="number" name="price" id="price" placeholder="Estimated price based on weight" readonly><br>
-
-            <button type="button" class="track-btn" onclick="window.location.href='homepage.html';">Cancel</button>
-            <button type="submit" class="track-btn"onclick="window.location.href='Nextcallus.html';">Next</button>
+            <!-- ปุ่มยกเลิก + ปุ่มถัดไป -->
+            <button type="button" class="track-btn cancel-btn" onclick="window.location.href='homepage.html';">Cancel</button>
+            <button type="button" class="track-btn Next" onclick="window.location.href='Nextcallus.html';">Next</button>
         </form>
-    
+    </div>
+
 </body>
 </html>

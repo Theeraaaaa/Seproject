@@ -6,7 +6,6 @@
     <title>Payment</title>
     <link rel="stylesheet" href="css/payment.css">
     <script>
-        // Function to get query parameters from the URL
         function getQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);
             return {
@@ -22,10 +21,8 @@
             };
         }
 
-        // Function to display order details
         function displayOrderDetails() {
             const orderDetails = getQueryParams();
-
             document.getElementById('firstname').textContent = orderDetails.firstname;
             document.getElementById('lastname').textContent = orderDetails.lastname;
             document.getElementById('tel').textContent = orderDetails.tel;
@@ -38,14 +35,21 @@
         }
 
         function completePayment() {
-            alert("Payment Successful!");
+            alert("ชำระเงินสำเร็จ!");
+
+            // สร้าง Tracking Number สุ่ม
             const trackingNumber = "TRACK-" + Math.random().toString(36).substring(2, 10).toUpperCase();
-            document.getElementById('tracking-number').textContent = trackingNumber;
+
+            // ดึงค่าจากฟอร์ม
+            const params = new URLSearchParams(getQueryParams());
+            params.append("tracking_number", trackingNumber); // เพิ่ม Tracking Number
+
+            // ไปหน้า Success.html พร้อมส่งข้อมูล
+            window.location.href = "Success.html?" + params.toString();
         }
 
-        // Function to go back to the previous page
         function cancelOrder() {
-            window.history.back(); // Goes back to the previous page in history
+            window.history.back();
         }
 
         window.onload = function() {
@@ -67,8 +71,7 @@
 
     <div class="container">
         <h2>Payment</h2>
-    
-        <!-- Order Details -->
+
         <p><strong>Firstname:</strong> <span id="firstname"></span></p>
         <p><strong>Lastname:</strong> <span id="lastname"></span></p>
         <p><strong>Tel:</strong> <span id="tel"></span></p>
@@ -78,17 +81,12 @@
         <p><strong>Product Weight:</strong> <span id="weight"></span> kg</p>
         <p><strong>Product Type:</strong> <span id="product_type"></span></p>
         <p><strong>Estimated Price:</strong> <span id="price"></span> THB</p>
-    
-        <!-- Button Container -->
+
         <div class="button-container">
             <button type="button" onclick="completePayment()" class="track-btn">Complete Payment</button>
             <button type="button" onclick="cancelOrder()" class="track-btn cancel-btn">Cancel Order</button>
         </div>
-    
-        <!-- Tracking Number Section -->
-        <p><strong>Tracking Number:</strong> <span id="tracking-number"></span></p>
     </div>
-    
 
 </body>
 </html>

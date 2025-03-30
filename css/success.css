@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* พื้นหลังอ่อน */
+    text-align: center;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: lightsteelblue;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white; /* ตัวอักษรสีขาว */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline; /* ขีดเส้นใต้เมื่อ hover */
+}
+
+/* Container Styles */
+.container {
+    background: white;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงาเบา */
+}
+
+h2 {
+    color: #007bff; /* สีฟ้าสำหรับหัวข้อ */
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #333; /* สีตัวอักษรเข้ม */
+    margin: 10px 0;
+}
+
+p strong {
+    color: #000; /* สีดำสำหรับคำที่ต้องการเน้น */
+}
+
+/* Tracking Number */
+#tracking-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745; /* สีเขียวสำหรับหมายเลขติดตาม */
+}
+
+/* Button Styles */
+.track-btn {
+    background-color: #007bff; /* สีฟ้าสำหรับปุ่ม */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 0.3s; /* การเปลี่ยนแปลงที่ลื่นไหล */
+}
+
+.track-btn:hover {
+    background-color: #0056b3; /* สีน้ำเงินเข้มเมื่อ hover */
+}

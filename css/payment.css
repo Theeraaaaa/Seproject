@@ -80,37 +80,18 @@ body {
     font-weight: bold;
 }
 
-/* ปรับปุ่มให้อยู่ข้างกัน */
-.button-container {
-    display: flex;
-    justify-content: space-between; /* ให้ปุ่มห่างกันเท่ากัน */
-    gap: 10px; /* ระยะห่างระหว่างปุ่ม */
-    margin-top: 20px;
-}
-
-/* ปรับขนาดและสไตล์ปุ่ม */
 .track-btn {
-    flex: 1; /* ให้ปุ่มขยายเต็มที่เท่ากัน */
+    margin-top: 20px;
     background-color: #007bff; /* สีฟ้า */
     color: white;
     border: none;
-    padding: 12px;
+    padding: 10px 15px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
-    text-align: center;
 }
 
 .track-btn:hover {
     background-color: #0056b3; /* สีน้ำเงินเข้มเมื่อ hover */
-}
-
-/* ปรับสีของปุ่ม Cancel Order ให้แตกต่าง */
-.cancel-btn {
-    background-color: #f44336; /* สีแดง */
-}
-
-.cancel-btn:hover {
-    background-color: #d32f2f; /* สีแดงเข้มเมื่อ hover */
 }
