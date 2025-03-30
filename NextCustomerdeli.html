@@ -26,7 +26,6 @@
         <p><strong>Lastname:</strong> <?php echo htmlspecialchars($_POST['lastname']); ?></p>
         <p><strong>Tel:</strong> <?php echo htmlspecialchars($_POST['tel']); ?></p>
         <p><strong>Address:</strong> <?php echo htmlspecialchars($_POST['address']); ?></p>
-        <p><strong>Destination Address:</strong> <?php echo htmlspecialchars($_POST['destination_address']); ?></p>
         <p><strong>Delivery Type:</strong> <?php echo htmlspecialchars($_POST['delivery_type']); ?></p>
         <p><strong>Product Weight:</strong> <?php echo htmlspecialchars($_POST['weight']); ?> kg</p>
         <p><strong>Product Type:</strong> <?php echo htmlspecialchars($_POST['product_type']); ?></p>
@@ -65,7 +64,7 @@
             <input type="hidden" name="product_type" value="<?php echo htmlspecialchars($_POST['product_type']); ?>">
             <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <button type="button" class="track-btn"onclick="window.location.href='#';">Confirm and Proceed</button>
+            <button type="button" class="track-btn"onclick="window.location.href='paymentys.html';">Confirm and Proceed</button>
             <button type="button" class="track-btn" onclick="window.location.href='customerdeli.html';">Cancel</button>
         </form>
     </div>
