@@ -8,15 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = !empty($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : NULL;
     $tel = !empty($_POST['tel']) ? htmlspecialchars($_POST['tel']) : NULL;
     $address = !empty($_POST['address']) ? htmlspecialchars($_POST['address']) : NULL;
-    $destination_address = !empty($_POST['destination_address']) ? htmlspecialchars($_POST['destination_address']) : NULL;
+    $province = !empty($_POST['province']) ? htmlspecialchars($_POST['province']) : NULL;
     $delivery_type = !empty($_POST['delivery_type']) ? htmlspecialchars($_POST['delivery_type']) : NULL;
     $weight = !empty($_POST['weight']) ? floatval($_POST['weight']) : 0;
     $product_type = !empty($_POST['product_type']) ? htmlspecialchars($_POST['product_type']) : NULL;
     $price = !empty($_POST['price']) ? floatval($_POST['price']) : 0;
 
     try {
-        $sql = "INSERT INTO customers (tracking_number, firstname, lastname, tel, address, destination_address, delivery_type, weight, product_type, price) 
-        VALUES (:tracking_number, :firstname, :lastname, :tel, :address, :destination_address, :delivery_type, :weight, :product_type, :price)";
+        $sql = "INSERT INTO customers (tracking_number, firstname, lastname, tel, address, province, delivery_type, weight, product_type, price) 
+        VALUES (:tracking_number, :firstname, :lastname, :tel, :address, :province, :delivery_type, :weight, :product_type, :price)";
         
         $stmt = $conn->prepare($sql);
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
         $stmt->bindValue(':tel', $tel, PDO::PARAM_STR);
         $stmt->bindValue(':address', $address, PDO::PARAM_STR);
-        $stmt->bindValue(':destination_address', $destination_address, PDO::PARAM_STR);
+        $stmt->bindValue(':province', $province, PDO::PARAM_STR);
         $stmt->bindValue(':delivery_type', $delivery_type, PDO::PARAM_STR);
         $stmt->bindValue(':weight', $weight, PDO::PARAM_STR);
         $stmt->bindValue(':product_type', $product_type, PDO::PARAM_STR);
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>Lastname:</strong> <?php echo $lastname; ?></p>
         <p><strong>Tel:</strong> <?php echo $tel; ?></p>
         <p><strong>Address:</strong> <?php echo $address; ?></p>
-        <p><strong>Destination Address:</strong> <?php echo $destination_address; ?></p>
+        <p><strong>Province:</strong> <?php echo $province; ?></p>
         <p><strong>Delivery Type:</strong> <?php echo $delivery_type; ?></p>
         <p><strong>Product Weight:</strong> <?php echo $weight; ?> kg</p>
         <p><strong>Product Type:</strong> <?php echo $product_type; ?></p>
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="hidden" name="lastname" value="<?php echo $lastname; ?>">
             <input type="hidden" name="tel" value="<?php echo $tel; ?>">
             <input type="hidden" name="address" value="<?php echo $address; ?>">
-            <input type="hidden" name="destination_address" value="<?php echo $destination_address; ?>">
+            <input type="hidden" name="province" value="<?php echo $province; ?>">
             <input type="hidden" name="delivery_type" value="<?php echo $delivery_type; ?>">
             <input type="hidden" name="weight" value="<?php echo $weight; ?>">
             <input type="hidden" name="product_type" value="<?php echo $product_type; ?>">

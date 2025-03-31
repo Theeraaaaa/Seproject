@@ -4,33 +4,45 @@ require_once 'db/db.php';
 
 // ตรวจสอบว่ามีข้อมูลถูกส่งมาหรือไม่
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // รับข้อมูลจาก $_POST และตรวจสอบว่าไม่เป็นค่าว่าง
     $firstname = !empty($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : NULL;
     $lastname = !empty($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : NULL;
     $tel = !empty($_POST['tel']) ? htmlspecialchars($_POST['tel']) : NULL;
     $address = !empty($_POST['address']) ? htmlspecialchars($_POST['address']) : NULL;
+    $destination_address = !empty($_POST['destination_address']) ? htmlspecialchars($_POST['destination_address']) : NULL;  
+    $province = !empty($_POST['province']) ? htmlspecialchars($_POST['province']) : NULL;
     $delivery_type = !empty($_POST['delivery_type']) ? htmlspecialchars($_POST['delivery_type']) : NULL;
     $weight = !empty($_POST['weight']) ? floatval($_POST['weight']) : 0;
     $product_type = !empty($_POST['product_type']) ? htmlspecialchars($_POST['product_type']) : NULL;
     $price = !empty($_POST['price']) ? floatval($_POST['price']) : 0;
 
+    // ตรวจสอบข้อมูลที่ได้รับ
+    if (is_null($firstname) || is_null($lastname) || is_null($tel)) {
+        echo "First name, last name, and telephone are required!";
+        exit;
+    }
+
     try {
-        $sql = "INSERT INTO orders (tracking_number, firstname, lastname, tel, address, delivery_type, weight, product_type, price) 
-        VALUES (:tracking_number, :firstname, :lastname, :tel, :address, :delivery_type, :weight, :product_type, :price)";
+        $sql = "INSERT INTO orders (tracking_number, firstname, lastname, tel, address, destination_address, province, delivery_type, weight, product_type, price) 
+                VALUES (:tracking_number, :firstname, :lastname, :tel, :address, :destination_address, :province, :delivery_type, :weight, :product_type, :price)";
 
-$stmt = $conn->prepare($sql);
+        $stmt = $conn->prepare($sql);
 
-// Bind ค่าที่ส่งมา
-$stmt->bindValue(':tracking_number', 'TRACK-' . strtoupper(uniqid()), PDO::PARAM_STR);
-$stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-$stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-$stmt->bindValue(':tel', $tel, PDO::PARAM_STR);
-$stmt->bindValue(':address', $address, PDO::PARAM_STR);
-$stmt->bindValue(':delivery_type', $delivery_type, PDO::PARAM_STR);
-$stmt->bindValue(':weight', $weight, PDO::PARAM_STR);
-$stmt->bindValue(':product_type', $product_type, PDO::PARAM_STR);
-$stmt->bindValue(':price', $price, PDO::PARAM_STR);
+        // Binding parameters
+        $stmt->bindValue(':tracking_number', 'TRACK-' . strtoupper(uniqid()), PDO::PARAM_STR);
+        $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+        $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+        $stmt->bindValue(':tel', $tel, PDO::PARAM_STR);
+        $stmt->bindValue(':address', $address, PDO::PARAM_STR);
+        $stmt->bindValue(':destination_address', $destination_address, PDO::PARAM_STR);
+        $stmt->bindValue(':province', $province, PDO::PARAM_STR);
+        $stmt->bindValue(':delivery_type', $delivery_type, PDO::PARAM_STR);
+        $stmt->bindValue(':weight', $weight, PDO::PARAM_STR);
+        $stmt->bindValue(':product_type', $product_type, PDO::PARAM_STR);
+        $stmt->bindValue(':price', $price, PDO::PARAM_STR);
 
-$stmt->execute();
+        // Execute the statement
+        $stmt->execute();
 
         //echo "บันทึกข้อมูลสำเร็จ!";
     } catch (PDOException $e) {
@@ -39,7 +51,6 @@ $stmt->execute();
 } else {
     echo "No data received.";
 }
-
 
 ?>
 
@@ -70,6 +81,8 @@ $stmt->execute();
         <p><strong>Lastname:</strong> <?php echo $lastname; ?></p>
         <p><strong>Tel:</strong> <?php echo $tel; ?></p>
         <p><strong>Address:</strong> <?php echo $address; ?></p>
+        <p><strong>Destination Address:</strong> <?php echo $destination_address; ?></p>
+        <p><strong>Province:</strong> <?php echo $province; ?></p>
         <p><strong>Delivery Type:</strong> <?php echo $delivery_type; ?></p>
         <p><strong>Product Weight:</strong> <?php echo $weight; ?> kg</p>
         <p><strong>Product Type:</strong> <?php echo $product_type; ?></p>
@@ -80,6 +93,8 @@ $stmt->execute();
             <input type="hidden" name="lastname" value="<?php echo $lastname; ?>">
             <input type="hidden" name="tel" value="<?php echo $tel; ?>">
             <input type="hidden" name="address" value="<?php echo $address; ?>">
+            <input type="hidden" name="destination_address" value="<?php echo $destination_address; ?>">
+            <input type="hidden" name="province" value="<?php echo $province; ?>">
             <input type="hidden" name="delivery_type" value="<?php echo $delivery_type; ?>">
             <input type="hidden" name="weight" value="<?php echo $weight; ?>">
             <input type="hidden" name="product_type" value="<?php echo $product_type; ?>">

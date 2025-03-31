@@ -17,7 +17,7 @@ $sql = "
     FROM orders WHERE tracking_number = :tracking_number
     UNION
     SELECT tracking_number, 
-           'Registered Customer' AS delivery_status, 
+           'Pending' AS delivery_status, 
            created_at AS last_update 
     FROM customers WHERE tracking_number = :tracking_number
 ";
