@@ -33,14 +33,12 @@ require_once 'db/db.php';
     <input type="username" name="username" placeholder="Username" required><br>
     <input type="password" name="password" placeholder="Password" required><br>
 
-    <a href="homepage.php">
-        <button class="buttun button1">Submit</button>
-    </a>
+    <button class="button button1" type="submit" name="signin">Submit</button> 
+</form>
 
-    <a href="index.php">
-        <button class="buttun button2">Cancel</button>
-    </a>
-
+        <a href="index.php">
+            <button class="button button2">Cancel</button>
+        </a>
     <p>Don't have an account? <a href="register.php" class="btn btn-register">Register</a></p>
 
     </div>

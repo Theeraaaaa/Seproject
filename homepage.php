@@ -1,9 +1,10 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_login'])) {
-    header("location: login.php");
-    exit();
-}
+<?php 
+    session_start();
+    require_once 'db/db.php';
+    if(!isset($_SESSION['user_login'])){
+        $_SESSION['error']='Please login';
+        header('location: login.php');
+    }
 ?>
 
 <!DOCTYPE html>
