@@ -37,34 +37,39 @@
     <div class="container">
         <h2>Confirm Pickup and Delivery</h2>
         <form action="NextCustomerdeli.php" method="POST">
-    <input type="text" name="firstname" placeholder="Firstname" required>
-    <input type="text" name="lastname" placeholder="Lastname" required><br>
-    <input type="tel" name="tel" placeholder="Tel" required><br>
-    <input type="text" name="address" placeholder="Address" required><br>
+            <div class="track-form">
+                <input type="text" name="firstname" placeholder="Firstname" required>
+                <input type="text" name="lastname" placeholder="Lastname" required><br>
 
-    <label for="delivery_type">Delivery Type:</label>
-    <select name="delivery_type" id="delivery_type" required>
-        <option value="standard">Standard</option>
-        <option value="express">Express</option>
-    </select><br>
+                <input type="tel" name="tel" placeholder="Tel" required><br>
+                <input type="text" name="address" placeholder="Address" required><br>
+                <input type="text" name="destination_address" placeholder="Destination Address" required><br>
 
-    <label for="weight">Product Weight (kg):</label>
-    <input type="number" name="weight" id="weight" placeholder="Enter weight in kg" step="0.1" min="0" required><br>
+                <label for="delivery_type">Delivery Type:</label>
+                <select name="delivery_type" id="delivery_type" required onchange="calculatePrice()">
+                    <option value="standard">Standard</option>
+                    <option value="express">Express</option>
+                </select><br>
 
-    <label for="product_type">Product Type:</label>
-    <select name="product_type" id="product_type" required>
-        <option value="general_use">General Use</option>
-        <option value="electronics">Electronics</option>
-    </select><br>
+                <label for="weight">Product Weight (kg):</label>
+                <input type="number" name="weight" id="weight" placeholder="Enter weight in kg" step="0.1" min="0" required oninput="calculatePrice()"><br>
 
-    <!-- ปุ่ม "Next" สำหรับไปต่อ -->
-    <button type="submit">Next</button>
+                <label for="product_type">Product Type:</label>
+                <select name="product_type" id="product_type" required onchange="calculatePrice()">
+                    <option value="general_use">General Use</option>
+                    <option value="electronics">Electronics</option>
+                </select><br>
 
-    <!-- ปุ่ม "Cancel" กลับไปหน้า homepage.php หรือ customerdeli.php -->
-    <button type="button" onclick="window.location.href='homepage.php';">Cancel</button>
-</form>
+                <label for="price">Total Price (฿):</label>
+                <input type="text" name="price" id="price" readonly><br>
 
+                <!-- ปุ่ม "Next" สำหรับไปต่อ -->
+                <button type="submit" class="track-btn">Next</button>
 
+                <!-- ปุ่ม "Cancel" กลับไปหน้า homepage.php -->
+                <button type="button" class="track-btn cancel-btn" onclick="window.location.href='homepage.php';">Cancel</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>

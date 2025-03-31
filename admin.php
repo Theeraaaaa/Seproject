@@ -1,3 +1,14 @@
+<?php 
+session_start();
+require_once 'db/db.php';
+
+// ตรวจสอบการล็อกอินของผู้ดูแลระบบ
+if (!isset($_SESSION['admin_login'])) {
+    $_SESSION['error'] = 'Please login';
+    header('location: login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

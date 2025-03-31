@@ -1,3 +1,48 @@
+<?php
+session_start();
+require_once 'db/db.php';
+
+// ตรวจสอบว่ามีข้อมูลถูกส่งมาหรือไม่
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstname = !empty($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : NULL;
+    $lastname = !empty($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : NULL;
+    $tel = !empty($_POST['tel']) ? htmlspecialchars($_POST['tel']) : NULL;
+    $address = !empty($_POST['address']) ? htmlspecialchars($_POST['address']) : NULL;
+    $delivery_type = !empty($_POST['delivery_type']) ? htmlspecialchars($_POST['delivery_type']) : NULL;
+    $weight = !empty($_POST['weight']) ? floatval($_POST['weight']) : 0;
+    $product_type = !empty($_POST['product_type']) ? htmlspecialchars($_POST['product_type']) : NULL;
+    $price = !empty($_POST['price']) ? floatval($_POST['price']) : 0;
+
+    try {
+        $sql = "INSERT INTO orders (tracking_number, firstname, lastname, tel, address, delivery_type, weight, product_type, price) 
+        VALUES (:tracking_number, :firstname, :lastname, :tel, :address, :delivery_type, :weight, :product_type, :price)";
+
+$stmt = $conn->prepare($sql);
+
+// Bind ค่าที่ส่งมา
+$stmt->bindValue(':tracking_number', 'TRACK-' . strtoupper(uniqid()), PDO::PARAM_STR);
+$stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+$stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+$stmt->bindValue(':tel', $tel, PDO::PARAM_STR);
+$stmt->bindValue(':address', $address, PDO::PARAM_STR);
+$stmt->bindValue(':delivery_type', $delivery_type, PDO::PARAM_STR);
+$stmt->bindValue(':weight', $weight, PDO::PARAM_STR);
+$stmt->bindValue(':product_type', $product_type, PDO::PARAM_STR);
+$stmt->bindValue(':price', $price, PDO::PARAM_STR);
+
+$stmt->execute();
+
+        //echo "บันทึกข้อมูลสำเร็จ!";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+} else {
+    echo "No data received.";
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,57 +64,30 @@
     </nav>
 
     <div class="container">
-        <h2>Confirm Pickup and Delivery</h2>
+        <h2>Confirm Order Details</h2>
 
-        <!-- Customer Information Display -->
-        <p><strong>Firstname:</strong> <?php echo htmlspecialchars($_POST['firstname']); ?></p>
-        <p><strong>Lastname:</strong> <?php echo htmlspecialchars($_POST['lastname']); ?></p>
-        <p><strong>Tel:</strong> <?php echo htmlspecialchars($_POST['tel']); ?></p>
-        <p><strong>Address:</strong> <?php echo htmlspecialchars($_POST['address']); ?></p>
-        <p><strong>Destination Address:</strong> <?php echo htmlspecialchars($_POST['destination_address']); ?></p>
-        <p><strong>Delivery Type:</strong> <?php echo htmlspecialchars($_POST['delivery_type']); ?></p>
-        <p><strong>Product Weight:</strong> <?php echo htmlspecialchars($_POST['weight']); ?> kg</p>
-        <p><strong>Product Type:</strong> <?php echo htmlspecialchars($_POST['product_type']); ?></p>
+        <p><strong>Firstname:</strong> <?php echo $firstname; ?></p>
+        <p><strong>Lastname:</strong> <?php echo $lastname; ?></p>
+        <p><strong>Tel:</strong> <?php echo $tel; ?></p>
+        <p><strong>Address:</strong> <?php echo $address; ?></p>
+        <p><strong>Delivery Type:</strong> <?php echo $delivery_type; ?></p>
+        <p><strong>Product Weight:</strong> <?php echo $weight; ?> kg</p>
+        <p><strong>Product Type:</strong> <?php echo $product_type; ?></p>
+        <p><strong>Total Price:</strong> ฿<?php echo number_format($price, 2); ?></p>
 
-        <!-- Calculate Estimated Price -->
-        <?php
-            $weight = $_POST['weight'];
-            $delivery_type = $_POST['delivery_type'];
-            $product_type = $_POST['product_type'];
-            $base_price = 50; // Base price for calculation (can be adjusted)
-
-            // Adjust price based on weight
-            $price = $base_price + ($weight * 10); // Price calculation example
-            
-            // Adjust price based on delivery type
-            if ($delivery_type == 'express') {
-                $price += 30; // Express delivery fee
-            }
-
-            // Adjust price based on product type
-            if ($product_type == 'electronics') {
-                $price += 20; // Electronics handling fee
-            }
-        ?>
-
-        <p><strong>Estimated Price (THB):</strong> <?php echo number_format($price, 2); ?> THB</p>
-
-        <!-- Confirm or Cancel -->
-        <form action="confirm_order.php" method="POST">
-            <input type="hidden" name="firstname" value="<?php echo htmlspecialchars($_POST['firstname']); ?>">
-            <input type="hidden" name="lastname" value="<?php echo htmlspecialchars($_POST['lastname']); ?>">
-            <input type="hidden" name="tel" value="<?php echo htmlspecialchars($_POST['tel']); ?>">
-            <input type="hidden" name="address" value="<?php echo htmlspecialchars($_POST['address']); ?>">
-            <input type="hidden" name="destination_address" value="<?php echo htmlspecialchars($_POST['destination_address']); ?>">
-            <input type="hidden" name="delivery_type" value="<?php echo htmlspecialchars($_POST['delivery_type']); ?>">
-            <input type="hidden" name="weight" value="<?php echo htmlspecialchars($_POST['weight']); ?>">
-            <input type="hidden" name="product_type" value="<?php echo htmlspecialchars($_POST['product_type']); ?>">
+        <form action="paymentys.php" method="POST">
+            <input type="hidden" name="firstname" value="<?php echo $firstname; ?>">
+            <input type="hidden" name="lastname" value="<?php echo $lastname; ?>">
+            <input type="hidden" name="tel" value="<?php echo $tel; ?>">
+            <input type="hidden" name="address" value="<?php echo $address; ?>">
+            <input type="hidden" name="delivery_type" value="<?php echo $delivery_type; ?>">
+            <input type="hidden" name="weight" value="<?php echo $weight; ?>">
+            <input type="hidden" name="product_type" value="<?php echo $product_type; ?>">
             <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <button type="button" class="track-btn"onclick="window.location.href='Payment.php';">Confirm and Proceed</button>
-            <button type="button" class="track-btn" onclick="window.location.href='callus.php';">Cancel</button>
+            <button type="submit">Proceed to Payment</button>
+            <button type="button" class="track-btn cancel-btn" onclick="window.location.href='homepage.php';">Cancel</button>
         </form>
     </div>
-
 </body>
 </html>

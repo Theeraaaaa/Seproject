@@ -52,7 +52,7 @@ body {
     margin-top: 50px;
     padding: 20px;
     background: white;
-    width: 40%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
@@ -60,12 +60,14 @@ body {
 }
 
 .track-form {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .track-form input, .track-form select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -74,40 +76,33 @@ body {
 
 .track-form label {
     font-size: 16px;
-    margin-top: 10px;
     display: block;
     text-align: left;
     font-weight: bold;
 }
 
-/* Styling for the buttons */
-button[type="submit"], button[type="button"] {
+.track-btn {
     margin-top: 20px;
-    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 15px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    width: 48%;
-    margin: 10px 1%;
-    border: none; /* Ensure no border appears */
+    transition: background 0.3s;
+    width: 100%;
 }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s ease;
+.track-btn:hover {
+    background-color: #0056b3;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3; /* Hover color for Next button */
-}
-
-button[type="button"] {
+.track-btn.cancel-btn {
     background-color: #dc3545;
-    color: white;
-    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-button[type="button"]:hover {
-    background-color: #a71d2a; /* Hover color for Cancel button */
+.track-btn.cancel-btn:hover {
+    background-color: #c82333;
 }
