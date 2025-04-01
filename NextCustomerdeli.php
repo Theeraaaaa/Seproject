@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Order</title>
-    <link rel="stylesheet" href="css/Nextcallus.css">
+    <link rel="stylesheet" href="css/NextCustomerdeli.css">
 </head>
 <body>
     <nav class="navbar">
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="hidden" name="product_type" value="<?php echo $product_type; ?>">
             <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <button type="submit">Proceed to Payment</button>
+            <button type="submit" class="submit-btn">Proceed to Payment</button>
             <a href="customerdeli.php" class="cancel-btn">Cancel</a>
         </form>
     </div>

@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : "";
     $tel = isset($_POST['tel']) ? htmlspecialchars($_POST['tel']) : "";
     $address = isset($_POST['address']) ? htmlspecialchars($_POST['address']) : "";
+    $destination_address = isset($_POST['destination_address']) ? htmlspecialchars($_POST['destination_address']) : "";
     $province = isset($_POST['province']) ? htmlspecialchars($_POST['province']) : "";
     $delivery_type = isset($_POST['delivery_type']) ? htmlspecialchars($_POST['delivery_type']) : "";
     $weight = isset($_POST['weight']) ? htmlspecialchars($_POST['weight']) : 0;
@@ -46,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>Lastname:</strong> <?php echo $lastname; ?></p>
         <p><strong>Tel:</strong> <?php echo $tel; ?></p>
         <p><strong>Address:</strong> <?php echo $address; ?></p>
+        <p><strong>Destination Address:</strong> <?php echo $destination_address; ?></p>
         <p><strong>Province:</strong> <?php echo $province; ?></p>
         <p><strong>Delivery Type:</strong> <?php echo $delivery_type; ?></p>
         <p><strong>Product Weight:</strong> <?php echo number_format($weight, 2); ?> kg</p>

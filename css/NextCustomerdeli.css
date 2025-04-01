@@ -8,6 +8,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ทำให้ทั้งหน้าเว็บมีความสูงเต็มจอ */
 }
 
 .navbar {
@@ -17,7 +21,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed; /* ให้แถบเมนูอยู่บนสุด */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* ให้แถบเมนูทับเนื้อหาต่างๆ */
 }
+
 .navbar .logo {
     font-size: 32px;
     font-weight: bold;
@@ -48,49 +57,85 @@ body {
 }
 
 .container {
-    margin-top: 50px;
-    padding: 20px;
-    background: white;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: rgb(227, 227, 227);
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin-top: 100px; /* เพิ่มระยะห่างจากแถบเมนู */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.track-form {
-    margin-top: 20px;
+.container h2 {
+    font-size: 24px;
+    color: #181818;
+    margin-bottom: 20px;
 }
 
-.track-form input, .track-form select {
+.container p {
+    font-size: 18px;
+    color: #fff;
+    margin: 8px 0;
+}
+
+/* Button Styling */
+.submit-btn, .cancel-btn {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;
     border-radius: 5px;
-    font-size: 16px;
-}
-
-.track-form label {
-    font-size: 16px;
-    margin-top: 10px;
-    display: block;
-    text-align: left;
-    font-weight: bold;
-}
-
-.track-btn {
-    margin-top: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
     cursor: pointer;
-    transition: background 0.3s;
+    margin-top: 20px;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, border-radius 0.3s;
 }
 
-.track-btn:hover {
-    background-color: #0056b3;
+/* Submit Button */
+.submit-btn {
+    background-color: rgb(74, 70, 179);
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: brown;
+    border-radius: 4px;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    background-color:  rgb(74, 70, 179);
+    color: white;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background-color:  brown;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .container h2 {
+        font-size: 20px;
+    }
+
+    .container p {
+        font-size: 16px;
+    }
+
+    .submit-btn, .cancel-btn {
+        font-size: 16px;
+    }
 }

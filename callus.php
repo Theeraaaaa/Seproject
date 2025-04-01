@@ -7,87 +7,89 @@
     <link rel="stylesheet" href="css/callus.css">
     <script>
         function calculatePrice() {
-            let weight = parseFloat(document.getElementById('weight').value) || 0;
-            let deliveryType = document.getElementById('delivery_type').value;
-            let productType = document.getElementById('product_type').value;
-            let province = document.getElementById('province').value;
-            
-            // Set the base price for delivery (can be adjusted based on needs)
-            let basePrice = 50;
-            
-            // Set province-specific prices
-            const provincePrice = {
-                "bangkok": 20,
-                "amnat_charoen": 40,
-                "ang_thong": 35,
-                "bueng_kan": 50,
-                "buri_ram": 60,
-                "chachoengsao": 30,
-                "chonburi": 25,
-                "chumphon": 45,
-                "kalasin": 50,
-                "kamphaeng_phet": 55,
-                "kanchanaburi": 40,
-                "khon_kaen": 50,
-                "krabi": 60,
-                "lamphun": 45,
-                "lampang": 40,
-                "loei": 50,
-                "mahasarakham": 55,
-                "mueang_chonburi": 30,
-                "nakhon_nayok": 35,
-                "nakhon_pathom": 30,
-                "nakhon_ratchasima": 50,
-                "nan": 55,
-                "narathiwat": 60,
-                "nong_bua_lamphu": 50,
-                "nong_khai": 45,
-                "pathum_thani": 25,
-                "pattani": 60,
-                "phayao": 55,
-                "phang_nga": 60,
-                "phatthalung": 50,
-                "phichit": 45,
-                "phitsanulok": 50,
-                "phrae": 50,
-                "phetchaburi": 40,
-                "phetchabun": 40,
-                "ranong": 60,
-                "ratchaburi": 35,
-                "rayong": 30,
-                "sakonnakhon": 55,
-                "samut_sakhon": 30,
-                "samut_prakan": 25,
-                "saraburi": 35,
-                "singburi": 40,
-                "si_saket": 50,
-                "songkhla": 60,
-                "sukhothai": 45,
-                "suphanburi": 40,
-                "surat_thani": 60,
-                "tak": 50,
-                "udon_thani": 55,
-                "utai_thani": 40,
-                "yala": 60,
-                "yasothon": 50
-            };
+    let weight = parseFloat(document.getElementById('weight').value) || 0;
+    let deliveryType = document.getElementById('delivery_type').value;
+    let productType = document.getElementById('product_type').value;
+    let province = document.getElementById('province').value;
 
-            // Get the price based on the province selected
-            let provinceSpecificPrice = provincePrice[province] || 0;
+    let basePrice = 50;
 
-            // Calculate total price
-            let price = basePrice + provinceSpecificPrice + (weight * 20);
+    // ข้อมูลระยะทางจากศรีราชาไปยังจังหวัดต่างๆ (โดยประมาณ)
+    const distanceToSriracha = {
+        "bangkok": 120,
+        "amnat_charoen": 650,
+        "ang_thong": 150,
+        "bueng_kan": 700,
+        "buri_ram": 350,
+        "chachoengsao": 80,
+        "chonburi": 30, //ระยะทางศรีราชาถึงตัวเมืองชลบุรี
+        "chumphon": 500,
+        "kalasin": 500,
+        "kamphaeng_phet": 350,
+        "kanchanaburi": 250,
+        "khon_kaen": 450,
+        "krabi": 800,
+        "lamphun": 750,
+        "lampang": 700,
+        "loei": 550,
+        "mahasarakham": 500,
+        "mueang_chonburi": 30, //ระยะทางศรีราชาถึงตัวเมืองชลบุรี
+        "nakhon_nayok": 120,
+        "nakhon_pathom": 180,
+        "nakhon_ratchasima": 250,
+        "nan": 800,
+        "narathiwat": 1100,
+        "nong_bua_lamphu": 600,
+        "nong_khai": 650,
+        "pathum_thani": 140,
+        "pattani": 1000,
+        "phayao": 800,
+        "phang_nga": 850,
+        "phatthalung": 900,
+        "phichit": 400,
+        "phitsanulok": 450,
+        "phrae": 700,
+        "phetchaburi": 300,
+        "phetchabun": 400,
+        "ranong": 600,
+        "ratchaburi": 250,
+        "rayong": 50,
+        "sakonnakhon": 550,
+        "samut_sakhon": 160,
+        "samut_prakan": 130,
+        "saraburi": 180,
+        "singburi": 200,
+        "si_saket": 550,
+        "songkhla": 950,
+        "sukhothai": 450,
+        "suphanburi": 200,
+        "surat_thani": 700,
+        "tak": 500,
+        "udon_thani": 600,
+        "utai_thani": 250,
+        "yala": 1050,
+        "yasothon": 550
+    };
 
-            if (deliveryType === 'express') {
-                price += 30;
-            }
-            if (productType === 'electronics') {
-                price += 20;
-            }
+    // อัตราค่าขนส่งต่อกิโลเมตร (ตัวอย่าง)
+    const ratePerKilometer = 2; //ปรับอัตราตามความเหมาะสม
 
-            // Set the calculated price in the price input field
-            document.getElementById('price').value = price.toFixed(2);
-        }
+    // คำนวณราคาระยะทาง
+    let distance = distanceToSriracha[province] || 0;
+    let distancePrice = distance * ratePerKilometer;
+
+    // Calculate total price
+    let price = basePrice + distancePrice + (weight * 20);
+
+    if (deliveryType === 'express') {
+        price += 30;
+    }
+    if (productType === 'electronics') {
+        price += 20;
+    }
+
+    document.getElementById('price').value = price.toFixed(2);
+}
     </script>
 </head>
 <body>

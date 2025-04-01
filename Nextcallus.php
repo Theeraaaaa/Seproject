@@ -2,56 +2,49 @@
 session_start();
 require_once 'db/db.php';
 
-// ตรวจสอบว่ามีข้อมูลถูกส่งมาหรือไม่
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // รับข้อมูลจาก $_POST และตรวจสอบว่าไม่เป็นค่าว่าง
-    $firstname = !empty($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : NULL;
-    $lastname = !empty($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : NULL;
-    $tel = !empty($_POST['tel']) ? htmlspecialchars($_POST['tel']) : NULL;
-    $address = !empty($_POST['address']) ? htmlspecialchars($_POST['address']) : NULL;
-    $destination_address = !empty($_POST['destination_address']) ? htmlspecialchars($_POST['destination_address']) : NULL;  
-    $province = !empty($_POST['province']) ? htmlspecialchars($_POST['province']) : NULL;
-    $delivery_type = !empty($_POST['delivery_type']) ? htmlspecialchars($_POST['delivery_type']) : NULL;
+    $firstname = !empty($_POST['firstname']) ? htmlspecialchars(trim($_POST['firstname'])) : NULL;
+    $lastname = !empty($_POST['lastname']) ? htmlspecialchars(trim($_POST['lastname'])) : NULL;
+    $tel = !empty($_POST['tel']) ? htmlspecialchars(trim($_POST['tel'])) : NULL;
+    $address = !empty($_POST['address']) ? htmlspecialchars(trim($_POST['address'])) : NULL;
+    $destination_address = !empty($_POST['destination_address']) ? htmlspecialchars(trim($_POST['destination_address'])) : NULL;
+    $province = !empty($_POST['province']) ? htmlspecialchars(trim($_POST['province'])) : NULL;
+    $delivery_type = !empty($_POST['delivery_type']) ? htmlspecialchars(trim($_POST['delivery_type'])) : NULL;
     $weight = !empty($_POST['weight']) ? floatval($_POST['weight']) : 0;
-    $product_type = !empty($_POST['product_type']) ? htmlspecialchars($_POST['product_type']) : NULL;
+    $product_type = !empty($_POST['product_type']) ? htmlspecialchars(trim($_POST['product_type'])) : NULL;
     $price = !empty($_POST['price']) ? floatval($_POST['price']) : 0;
 
-    // ตรวจสอบข้อมูลที่ได้รับ
-    if (is_null($firstname) || is_null($lastname) || is_null($tel)) {
-        echo "First name, last name, and telephone are required!";
-        exit;
+    if (!$firstname || !$lastname || !$tel) {
+        die("<script>alert('Firstname, Lastname, and Telephone are required!'); window.history.back();</script>");
     }
 
     try {
+        $tracking_number = 'TRACK-' . strtoupper(uniqid());
         $sql = "INSERT INTO orders (tracking_number, firstname, lastname, tel, address, destination_address, province, delivery_type, weight, product_type, price) 
                 VALUES (:tracking_number, :firstname, :lastname, :tel, :address, :destination_address, :province, :delivery_type, :weight, :product_type, :price)";
-
+        
         $stmt = $conn->prepare($sql);
-
-        // Binding parameters
-        $stmt->bindValue(':tracking_number', 'TRACK-' . strtoupper(uniqid()), PDO::PARAM_STR);
-        $stmt->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-        $stmt->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-        $stmt->bindValue(':tel', $tel, PDO::PARAM_STR);
-        $stmt->bindValue(':address', $address, PDO::PARAM_STR);
-        $stmt->bindValue(':destination_address', $destination_address, PDO::PARAM_STR);
-        $stmt->bindValue(':province', $province, PDO::PARAM_STR);
-        $stmt->bindValue(':delivery_type', $delivery_type, PDO::PARAM_STR);
-        $stmt->bindValue(':weight', $weight, PDO::PARAM_STR);
-        $stmt->bindValue(':product_type', $product_type, PDO::PARAM_STR);
-        $stmt->bindValue(':price', $price, PDO::PARAM_STR);
-
-        // Execute the statement
+        $stmt->bindParam(':tracking_number', $tracking_number, PDO::PARAM_STR);
+        $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+        $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
+        $stmt->bindParam(':tel', $tel, PDO::PARAM_STR);
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+        $stmt->bindParam(':destination_address', $destination_address, PDO::PARAM_STR);
+        $stmt->bindParam(':province', $province, PDO::PARAM_STR);
+        $stmt->bindParam(':delivery_type', $delivery_type, PDO::PARAM_STR);
+        $stmt->bindParam(':weight', $weight, PDO::PARAM_STR);
+        $stmt->bindParam(':product_type', $product_type, PDO::PARAM_STR);
+        $stmt->bindParam(':price', $price, PDO::PARAM_STR);
+        
         $stmt->execute();
-
-        //echo "บันทึกข้อมูลสำเร็จ!";
+        
+        $_SESSION['tracking_number'] = $tracking_number;
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        die("<script>alert('Database error: " . $e->getMessage() . "'); window.history.back();</script>");
     }
 } else {
-    echo "No data received.";
+    die("<script>alert('No data received!'); window.location.href='homepage.php';</script>");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/Nextcallus.css">
 </head>
 <body>
-
     <nav class="navbar">
         <a href="homepage.php" class="logo">SeExpress</a>
         <ul>
@@ -76,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container">
         <h2>Confirm Order Details</h2>
-
+        <p><strong>Tracking Number:</strong> <?php echo $_SESSION['tracking_number']; ?></p>
         <p><strong>Firstname:</strong> <?php echo $firstname; ?></p>
         <p><strong>Lastname:</strong> <?php echo $lastname; ?></p>
         <p><strong>Tel:</strong> <?php echo $tel; ?></p>
@@ -89,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>Total Price:</strong> ฿<?php echo number_format($price, 2); ?></p>
 
         <form action="paymentys.php" method="POST">
+            <input type="hidden" name="tracking_number" value="<?php echo $_SESSION['tracking_number']; ?>">
             <input type="hidden" name="firstname" value="<?php echo $firstname; ?>">
             <input type="hidden" name="lastname" value="<?php echo $lastname; ?>">
             <input type="hidden" name="tel" value="<?php echo $tel; ?>">
@@ -100,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="hidden" name="product_type" value="<?php echo $product_type; ?>">
             <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-            <button type="submit">Proceed to Payment</button>
+            <button type="submit" class="track-btn submit-btn">Proceed to Payment</button>
             <button type="button" class="track-btn cancel-btn" onclick="window.location.href='homepage.php';">Cancel</button>
         </form>
     </div>

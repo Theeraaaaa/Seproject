@@ -7,87 +7,77 @@
     <link rel="stylesheet" href="css/Nextcallus.css">
     <script>
         function calculatePrice() {
-            let weight = parseFloat(document.getElementById('weight').value) || 0;
-            let deliveryType = document.getElementById('delivery_type').value;
-            let productType = document.getElementById('product_type').value;
-            let province = document.getElementById('province').value;
-            
-            // Set the base price for delivery (can be adjusted based on needs)
-            let basePrice = 50;
-            
-            // Set province-specific prices
-            const provincePrice = {
-                "bangkok": 20,
-                "amnat_charoen": 40,
-                "ang_thong": 35,
-                "bueng_kan": 50,
-                "buri_ram": 60,
-                "chachoengsao": 30,
-                "chonburi": 25,
-                "chumphon": 45,
-                "kalasin": 50,
-                "kamphaeng_phet": 55,
-                "kanchanaburi": 40,
-                "khon_kaen": 50,
-                "krabi": 60,
-                "lamphun": 45,
-                "lampang": 40,
-                "loei": 50,
-                "mahasarakham": 55,
-                "mueang_chonburi": 30,
-                "nakhon_nayok": 35,
-                "nakhon_pathom": 30,
-                "nakhon_ratchasima": 50,
-                "nan": 55,
-                "narathiwat": 60,
-                "nong_bua_lamphu": 50,
-                "nong_khai": 45,
-                "pathum_thani": 25,
-                "pattani": 60,
-                "phayao": 55,
-                "phang_nga": 60,
-                "phatthalung": 50,
-                "phichit": 45,
-                "phitsanulok": 50,
-                "phrae": 50,
-                "phetchaburi": 40,
-                "phetchabun": 40,
-                "ranong": 60,
-                "ratchaburi": 35,
-                "rayong": 30,
-                "sakonnakhon": 55,
-                "samut_sakhon": 30,
-                "samut_prakan": 25,
-                "saraburi": 35,
-                "singburi": 40,
-                "si_saket": 50,
-                "songkhla": 60,
-                "sukhothai": 45,
-                "suphanburi": 40,
-                "surat_thani": 60,
-                "tak": 50,
-                "udon_thani": 55,
-                "utai_thani": 40,
-                "yala": 60,
-                "yasothon": 50
-            };
+    let weight = parseFloat(document.getElementById('weight').value) || 0;
+    let deliveryType = document.getElementById('delivery_type').value;
+    let productType = document.getElementById('product_type').value;
+    let province = document.getElementById('province').value;
 
-            // Get the price based on the province selected
-            let provinceSpecificPrice = provincePrice[province] || 0;
+    let basePrice = 10;
+    let provincePrice = {
+        "bangkok": 20,
+        "amnat_charoen": 40,
+        "ang_thong": 35,
+        "bueng_kan": 50,
+        "buri_ram": 60,
+        "chachoengsao": 30,
+        "chonburi": 25,
+        "chumphon": 45,
+        "kalasin": 50,
+        "kamphaeng_phet": 55,
+        "kanchanaburi": 40,
+        "khon_kaen": 50,
+        "krabi": 60,
+        "lamphun": 45,
+        "lampang": 40,
+        "loei": 50,
+        "mahasarakham": 55,
+        "mueang_chonburi": 30,
+        "nakhon_nayok": 35,
+        "nakhon_pathom": 30,
+        "nakhon_ratchasima": 50,
+        "nan": 55,
+        "narathiwat": 60,
+        "nong_bua_lamphu": 50,
+        "nong_khai": 45,
+        "pathum_thani": 25,
+        "pattani": 60,
+        "phayao": 55,
+        "phang_nga": 60,
+        "phatthalung": 50,
+        "phichit": 45,
+        "phitsanulok": 50,
+        "phrae": 50,
+        "phetchaburi": 40,
+        "phetchabun": 40,
+        "ranong": 60,
+        "ratchaburi": 35,
+        "rayong": 30,
+        "sakonnakhon": 55,
+        "samut_sakhon": 30,
+        "samut_prakan": 25,
+        "saraburi": 35,
+        "singburi": 40,
+        "si_saket": 50,
+        "songkhla": 60,
+        "sukhothai": 45,
+        "suphanburi": 40,
+        "surat_thani": 60,
+        "tak": 50,
+        "udon_thani": 55,
+        "utai_thani": 40,
+        "yala": 60,
+        "yasothon": 50
+    };
 
-            // Calculate total price
-            let price = basePrice + provinceSpecificPrice + (weight * 20);
+    let provinceSpecificPrice = provincePrice[province] || 0; //Default value 0 if province not found.
+    let weightPrice = weight * 20;
+    let expressPrice = deliveryType === 'express' ? 30 : 0;
+    let electronicsPrice = productType === 'electronics' ? 20 : 0;
 
-            if (deliveryType === 'express') {
-                price += 30;
-            }
-            if (productType === 'electronics') {
-                price += 20;
-            }
+    let totalPrice = basePrice + provinceSpecificPrice + weightPrice + expressPrice + electronicsPrice;
 
-            // Set the calculated price in the price input field
-            document.getElementById('price').value = price.toFixed(2);
-        }
+    document.getElementById('price').value = totalPrice.toFixed(2);
+}
     </script>
 </head>
 <body>
